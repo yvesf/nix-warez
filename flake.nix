@@ -15,5 +15,8 @@
       qelectrotech = callPackage ./qelectrotech {};
       tinygo-bin = callPackage ./tinygo-bin {};
     };
+    nixosModules = {
+      tpLightBell = import ./tpLightBell/module.nix;
+    };
   };
 }
