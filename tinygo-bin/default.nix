@@ -1,4 +1,4 @@
-{ stdenv, fetchurl, buildFHSUserEnv, ... }:
+{ lib, stdenv, fetchurl, buildFHSUserEnv, ... }:
 let
   tinygo-bin = stdenv.mkDerivation rec {
     name = "tinygo-bin-${version}";
@@ -16,7 +16,7 @@ let
       tar --strip-components=1 --directory=$out -xzpf ${src}
     '';
 
-    meta = with stdenv.lib; {
+    meta = with lib; {
       homepage = "https://tinygo.org/";
       description = "Go compiler for small places (binary package)";
       license = licenses.bsd3;

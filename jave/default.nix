@@ -1,4 +1,4 @@
-{ makeDesktopItem, stdenv, fetchurl, jre, unzip, runtimeShell, ...}:
+{ makeDesktopItem, lib, stdenv, fetchurl, jre, unzip, runtimeShell, ...}:
 let
   desktopItem = launcher: makeDesktopItem {
     type = "Application";
@@ -33,7 +33,7 @@ in
       ${(desktopItem "$out/bin/jave").buildCommand}
     '';
 
-    meta = with stdenv.lib; {
+    meta = with lib; {
       description = "JavE is a free Ascii Editor. Rather than for editing texts, it is intended for drawing simple diagrams by using Ascii characters.";
       homepage = "http://jave.de/";
       license = licenses.unfree;

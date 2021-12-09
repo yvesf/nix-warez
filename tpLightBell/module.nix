@@ -11,6 +11,11 @@ in {
     };
   };
   config = lib.mkIf cfg.enable {
-    security.wrappers."${cfg.name}".source = "${tpLightBell}/bin/tpLightBell";
+    security.wrappers."${cfg.name}" = {
+      setuid = true;
+      owner = "root";
+      group = "root";
+      source = "${tpLightBell}/bin/tpLightBell";
+    };
   };
 }

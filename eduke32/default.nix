@@ -1,4 +1,4 @@
-{ eduke32, p7zip, makeDesktopItem, stdenv, fetchurl, runtimeShell, ...}:
+{ eduke32, p7zip, makeDesktopItem, lib, stdenv, fetchurl, runtimeShell, ...}:
 let
   desktopItem = launcher: suffix: makeDesktopItem {
     type = "Application";
@@ -32,7 +32,7 @@ in
       ${(desktopItem "$out/bin/eduke32" " - Single Player").buildCommand}
     '';
 
-    meta = with stdenv.lib; {
+    meta = with lib; {
       description = "TODO";
       homepage = "";
       license = licenses.unfree;
