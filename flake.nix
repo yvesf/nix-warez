@@ -1,6 +1,6 @@
 {
   description = "Packaging proprietary or binary software for nixos";
-  inputs.nixpkgs.url = "nixpkgs/nixos-20.09";
+  inputs.nixpkgs.url = "nixpkgs/nixos-21.11";
   outputs = { self, nixpkgs }: {
     packages.x86_64-linux = with import nixpkgs { system = "x86_64-linux"; config.allowUnfree = true; }; {
       aoe2fe = callPackage ./aoe2fe {};
@@ -14,6 +14,7 @@
       }) {};
       qelectrotech = callPackage ./qelectrotech {};
       tinygo-bin = callPackage ./tinygo-bin {};
+      rir-ip = callPackage ./rir-ip {};
     };
     nixosModules = {
       tpLightBell = import ./tpLightBell/module.nix;
