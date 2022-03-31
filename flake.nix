@@ -18,6 +18,7 @@
     };
     nixosModules = {
       tpLightBell = import ./tpLightBell/module.nix;
+      rir-ip = import ./rir-ip/module.nix;
     };
   };
 }
