@@ -1,6 +1,6 @@
 { stdenv, lib, fetchFromGitHub, writeScript, python3 }:
 let
-  ip-deagg = writeScript "ipv6-deagg.py" ''
+  ip-deagg = writeScript "ip-deagg.py" ''
     #!${python3}/bin/python3
     import ipaddress, sys
     for line in sys.stdin.readlines():
@@ -12,13 +12,13 @@ let
   '';
 in stdenv.mkDerivation {
   name = "ip-country";
-  version = "v20220331";
+  version = "v20220620";
 
   src = fetchFromGitHub {
     owner = "sapics";
     repo = "ip-location-db";
-    rev = "28086f45d8496e1112b475287ac9b7a0a3a680fe";
-    sha256 = "sha256-IINlpMowXgsKiUtxnZ7l6/ZvqCQ+TvnoLd2v485avKA=";
+    rev = "7ea5d81e99ca629d989291d25ac8310aaa70860f";
+    sha256 = "sha256-jLzmkQ9OMPoV7Ur4TZVbBLxXwu7vV102bEx8uz1U2ns=";
   };
 
   phases = [ "installPhase" ];
