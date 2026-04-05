@@ -1,5 +1,5 @@
 { writeScript, runCommand, requireFile, stdenv, lib, makeWrapper, makeDesktopItem
-, unzip, wineFull, winetricks, python3, gtk3, gobject-introspection, python3Packages, ... }:
+, unzip, wine, winetricks, python3, gtk3, gobject-introspection, python3Packages, ... }:
 let
   data = runCommand "AoE2-FE-zip" {
     outputHashMode = "recursive";
@@ -108,7 +108,7 @@ in stdenv.mkDerivation rec {
   ];
   propagatedBuildInputs = [
     data
-    wineFull
+    wine
     winetricks
     python3
   ];
