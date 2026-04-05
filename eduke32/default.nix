@@ -39,8 +39,8 @@ in
     '';
 
     meta = with lib; {
-      description = "TODO";
-      homepage = "";
+      description = "EDuke32 is an awesome, free homebrew game engine and source port of the classic PC first person shooter Duke Nukem 3D";
+      homepage = "https://www.eduke32.com/";
       license = licenses.unfree;
       platforms = platforms.linux;
       maintainers = with maintainers; [ yvesf ];
