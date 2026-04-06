@@ -1,6 +1,6 @@
 { lib, stdenv, fetchurl, dpkg, autoPatchelfHook,
 glib, pango, gtk2-x11, libsm, ...}:
-  stdenv.mkDerivation rec {
+  stdenv.mkDerivation {
     name = "tpps2";
     version = "1.24";
 
@@ -9,25 +9,24 @@ glib, pango, gtk2-x11, libsm, ...}:
       hash = "sha256-2HsSd861UssFSrFyeKRE5UcEsEuuNscbx20q/ZRXU3A=";
     };
 
-    nativeBuildInputs = [ dpkg autoPatchelfHook ];
+    nativeBuildInputs = [
+      autoPatchelfHook
+      dpkg
+    ];
 
     buildInputs = [
       glib
-      pango
       gtk2-x11
       libsm
+      pango
     ];
-
-    unpackPhase = ''
-      dpkg-deb -x $src unpack
-    '';
 
     installPhase = ''
       mkdir -p $out
-      cp -r unpack/usr/share $out
-      
+      cp -r usr/share $out
+
       mkdir -p $out/bin
-      ln -s -r $out/share/Technische-Alternative/Tapps2/Tapps2 $out/bin/tpps2
+      ln -s $out/share/Technische-Alternative/Tapps2/Tapps2 $out/bin/tpps2
     '';
 
     meta = with lib; {
