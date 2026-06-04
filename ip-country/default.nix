@@ -17,8 +17,8 @@ in stdenv.mkDerivation {
   src = fetchFromGitHub {
     owner = "sapics";
     repo = "ip-location-db";
-    rev = "7ea5d81e99ca629d989291d25ac8310aaa70860f";
-    sha256 = "sha256-jLzmkQ9OMPoV7Ur4TZVbBLxXwu7vV102bEx8uz1U2ns=";
+    rev = "e744ffa7779e6da3ecddbca809041233eaac28dd";
+    sha256 = "sha256-aXsAriVeMk6Z7xWFwjMovJfyr82vYhnvg+HJsdxv56w=";
   };
 
   phases = [ "installPhase" ];
