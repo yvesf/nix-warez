@@ -1,10 +1,10 @@
 { makeDesktopItem, lib, stdenv, fetchurl, jre, unzip, runtimeShell, ...}:
 let
-  desktopItem = launcher: makeDesktopItem {
+  desktopItem = makeDesktopItem {
     type = "Application";
     name = "JavE";
     desktopName = "JavE";
-    exec = "${launcher}";
+    exec = "jave";
   };
 in
   stdenv.mkDerivation rec {
@@ -29,9 +29,9 @@ in
       exec ${jre}/bin/java -jar $out/lib/jave/jave.jar
       EOF
       chmod +x $out/bin/jave
-
-      ${(desktopItem "$out/bin/jave").buildCommand}
     '';
+
+    desktopItems = [ desktopItem ];
 
     meta = with lib; {
       description = "JavE is a free Ascii Editor. Rather than for editing texts, it is intended for drawing simple diagrams by using Ascii characters.";

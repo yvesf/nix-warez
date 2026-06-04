@@ -1,10 +1,10 @@
 { eduke32, p7zip, makeDesktopItem, lib, stdenv, fetchurl, runtimeShell, ...}:
 let
-  desktopItem = launcher: suffix: makeDesktopItem {
+  desktopItem = suffix: makeDesktopItem {
     type = "Application";
     name = "eduke32 HRP" + suffix;
     desktopName = "eduke 32 HRP";
-    exec = "${launcher}";
+    exec = "eduke32";
   };
 in
   stdenv.mkDerivation rec {
@@ -35,8 +35,9 @@ in
       exec ${eduke32}/bin/eduke32 -j $out/lib $*
       EOF
       chmod +x $out/bin/eduke32
-      ${(desktopItem "$out/bin/eduke32" " - Single Player").buildCommand}
     '';
+
+    desktopItems = [ (desktopItem " - Single Player") ];
 
     meta = with lib; {
       description = "EDuke32 is an awesome, free homebrew game engine and source port of the classic PC first person shooter Duke Nukem 3D";
