@@ -10,7 +10,7 @@
       ip-country = callPackage ./ip-country { };
     };
     nixosModules = {
-      ip-country = import ./ip-country/module.nix;
+      ipset-lists = import ./ipset-lists/module.nix;
     };
     # nix eval --raw .#readme > README.md
     readme = let
@@ -21,9 +21,9 @@
       '';
     in
       ''
-      | name | description | website | licence | run |   
+      | name | description | website | licence | run |
       |------|-------------|---------|---------|-----|
-      '' + 
+      '' +
       lib.strings.concatStringsSep "" (lib.attrsets.mapAttrsToList deriv2md pkgs);
   };
 }
